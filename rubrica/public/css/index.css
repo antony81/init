@@ -1,0 +1,130 @@
+/*
+ * This file is part of Rubrica.
+ *
+ * Rubrica is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Rubrica is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Rubrica. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+body {
+    background: linear-gradient(to bottom, #f5f6f6 0%,#dbdce2 21%,#b8bac6 49%,#dddfe3 80%,#f5f6f6 100%);
+    background-size: cover;
+    background-position: initial;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+img {
+    margin: 0 20px;
+}
+
+h1 {
+    text-align: center;
+    color: darkorange;
+}
+
+h2 {
+    text-align: center;
+}
+
+input {
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%);
+    width: 200px;
+    height: 18px;
+    font-family: Verdana, Geneva, sans-serif;
+    border-style: inset;
+    border-width: 2px;
+    border-color: lightblue;
+    margin-top: 2px;
+    color: darkblue;
+}
+
+#mySubmit {
+    background: linear-gradient(to bottom, rgba(242,245,246,1) 0%,rgba(227,234,237,1) 37%,rgba(200,215,220,1) 100%);
+    width: 100px;
+    height: 24px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: bold;
+    color: black;
+    border: 1px black solid;
+}
+
+#myReset {
+    background: linear-gradient(to bottom, rgba(242,245,246,1) 0%,rgba(227,234,237,1) 37%,rgba(200,215,220,1) 100%);
+    width: 100px;
+    height: 24px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: bold;
+    color: black;
+    border: 1px black solid;
+}
+
+#bs {
+    background: linear-gradient(to bottom, rgba(242,245,246,1) 0%,rgba(227,234,237,1) 37%,rgba(200,215,220,1) 100%);
+    width: 100px;
+    height: 24px;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: bold;
+    color: black;
+    border: 1px black solid;
+}
+
+table, th , td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 7px;
+}
+
+table tr:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+#left {
+    float: left;
+    width: 400px;
+    height: 400px;
+    border: 1px lightslategray dotted;
+    margin-left: 30px;
+    padding: 20px;
+}
+
+#left label {
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+#left0 {
+    float: left;
+}
+
+#right0 {
+    float: left;
+    margin-left: 20px;
+    width: 160px;
+    text-align: center;
+}
+
+#t0 {
+    color: crimson;
+    text-decoration: underline;
+}
+
+#right {
+    float: left;
+    width: 600px;
+    height: 402px;
+    margin-left: 100px;
+    padding: 20px;
+}
+

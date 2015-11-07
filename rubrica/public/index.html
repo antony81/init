@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--
+This file is part of Rubrica.
+
+Rubrica is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+Rubrica is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Rubrica. If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>Rubrica</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/index.css" type="text/css">
+        <!--
+        Lo script di sotto è fondamentale per la corretta esecuzione del codice
+        perché ci consente di importare il contenuto utile per far funzionare
+        AngularJS (infatti si farà uso del file remoto 'angular.min.js'). In
+        alternativa si potrebbe usare un package manager come ad esempio 'npm'.
+        -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <!--
+        Questi script importano il modulo, il servizio, e i due controller
+        -->
+        <script src="js/myApp.js"></script>
+        <script src="js/myService.js"></script>
+        <script src="js/userController.js"></script>
+        <script src="js/loadController.js"></script>
+    </head>
+    <!--
+    La direttiva 'ng-app' definisce il contesto della nostra applicazione, cioè
+    indica ad AngularJS quale elemento della pagina prendere in considerazione
+    per poterlo interpretare come interfaccia grafica della nostra applicazione.
+    In questo caso la direttiva è dichiarata nel <body> per cui AngularJS si
+    concentrerà su tutta l'applicazione. Se la direttiva fosse stata dichiarata
+    nel <div> sottostante, AngularJS si sarebbe focalizzato esclusivamente in
+    tal punto. Si può notare che sul <div> è invece presente un'altro tipo di
+    direttiva.
+    -->
+    <body ng-app="myApp">
+        <h1>
+            <img id="i1" src="img/rubrica1.png" alt="rubrica1" height="48" width="48">
+            Rubrica
+            <img src="img/rubrica2.png" alt="rubrica1" height="48" width="48">
+        </h1>
+        <br>
+        <!--
+        I <div> che seguono possono essere definiti come 'View' in AngularJS ed
+        è il risultato visivo generato a partire dallo stesso <div>
+        eventualmente arricchito da direttive. La direttiva 'ng-controller' in
+        uso non fa altro che agganciare il 'Controller' definito negli 'script'.
+        Un 'Controller' va, ovviamente, scritto in JavaScript.
+        -->
+        <div id="left" ng-controller="userController">
+            <h2>Inserisci dati utente</h2><br><br>
+            <!--
+            Questa form richiamerà la callback presente nel file 'sever.js' che
+            fungerà da vero e proprio Server elaborando la richiesta in POST.
+            Accetterà quindi i dati dell'utente e li inserirà con una query nel
+            DataBase.
+            -->
+            <form action="/signup" method="post">
+                <div id="left0">
+                    <!--
+                    Sugli elementi <input> sottostanti si fa uso della direttiva
+                    'ng-model' la quale definisce un modello di dati associato alla
+                    casella di testo come ad esempio 'name'. In pratica 'ng-model'
+                    definisce una sorta di variabile 'name' a cui viene
+                    automaticamente assegnato il valore presente nella casella di
+                    testo quando sarà visualizzata. Questo meccanismo viene chiamato
+                    data binding che in AngularJS è bidirezionale (two-way binding),
+                    cioè ogni modifica al modello dei dati si riflette
+                    automaticamente sulla 'View' e ogni modifica alla 'View' viene
+                    riportata sul modello dei dati.
+                    -->
+                    <label>Nome:</label><br>
+                    <input name="name" type="text" ng-model="name"><br>
+                    <label>Cognome:</label><br>
+                    <input name="surname" type="text" ng-model="surname"><br>
+                    <label>Telefono:</label><br>
+                    <input name="phone" type="tel" ng-model="phone"><br>
+                    <label>Email:</label><br>
+                    <input name="email" type="email" ng-model="email"><br><br>
+                    <!--
+                    La direttiva ng-click in AngularJS garantisci tutti gli
+                    automatismi, dell'evento di click del mouse, previsti dal
+                    framework.
+                    Possiamo assegnare alle direttive di evento funzioni che siano
+                    accessibili dallo scope del 'Controller' corrente. In questo
+                    caso il metodo 'insert()' inserirà un nuovo utente in rubrica,
+                    mentre il metodo 'reset()' riazzererà i campi di testo.
+                    -->
+                    <input id="mySubmit" type="submit" value="Aggiungi" ng-click="insert()">
+                    <input id="myReset" type="button" value="Reset" ng-click="reset()">
+                </div>
+            </form>
+            <div id="right0">
+                <label id="t0">Riepilogo</label>
+                <!--
+                Elementi non usuali nel codice HTML sono le 'Espressioni'.
+                Le variabili di sotto verrano aggiornate grazie al data binding
+                non appena viene scritto qualcosa nei campi di testo di sopra.
+                -->
+                <p>{{ name }}</p>
+                <p>{{ surname }}</p>
+                <p>{{ phone }}</p>
+                <p>{{ email }}</p>
+            </div>
+        </div>
+        <div id="right" ng-controller="loadController">
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                </tr>
+                <!--
+                La direttiva 'ng-repeat' usata sotto consente di iterare la
+                struttura dati 'listU' e, usando il filtro 'orderBy' su
+                'surname', la tabella mostrerà i dati in ordine alfabetico sui
+                cognomi degli utenti registrati. Inoltre si è fatto uso anche
+                del filtro '$index', il quale ritorna l'indice della tabella in
+                modo da visualizzarlo nella prima cella di ogni riga.
+                -->
+                <tr ng-repeat="user in listU | orderBy : 'Cognome'">
+                    <td style="font-weight: bold;">{{ $index + 1 }}</td>
+                    <td>{{ user.Nome }}</td>
+                    <td>{{ user.Cognome }}</td>
+                    <td>{{ user.Telefono }}</td>
+                    <td>{{ user.Email }}</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
