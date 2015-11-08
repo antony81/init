@@ -106,6 +106,4 @@ exp.post('/signup', function(req, res) {
     res.redirect('/confirm.html');
 });
 
-//vedere 'promise q' che rende sincrono l'asincrono
-
 
