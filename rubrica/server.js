@@ -47,7 +47,7 @@ console.log("Server in ascolto su localhost:3000");
  * nostro HTML. Quest'oggetto 'body' sarà appesso all'oggetto 'request'
  * consentendo di richiamarlo quando serve. Esso è strutturato in modo da
  * contenere coppie di 'key-value', dove il 'value' sarà una string o un array,
- * se l'opzione 'extended' è false o qualsiasi altro tipo se è false.
+ * se l'opzione 'extended' è false o qualsiasi altro tipo se è true.
  */
 exp.use(bodyParser.urlencoded({
     extended: true
@@ -59,8 +59,8 @@ exp.use(bodyParser.urlencoded({
  */
 var connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: 'reti11'
+    user: 'user',
+    password: 'password'
 });
 
 /*
