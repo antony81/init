@@ -18,7 +18,7 @@
 /* Il metodo controller() consente di associare ad una stringa una
  * funzione che avrà il compito di rappresentare il nostro
  * 'Controller'. Nel caso specifico abbiamo associato al nome
- * 'listController' una funzione che aggancierà alla variabile '$scope'
+ * 'loadController' una funzione che aggancierà alla variabile '$scope'
  * la lista degli utenti.
  * 
  * Il metodo farà richiesta di GET all'indirizzo specificato e, in caso di
