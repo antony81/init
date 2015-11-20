@@ -151,3 +151,4 @@ function addslashes(str) {
     str = str.replace(/\0/g, '\\0');
     return str;
 }
+
