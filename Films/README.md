@@ -1,4 +1,4 @@
-# fILMS
+# Films
 #### Una piccola applicazione per testare le funzionalità di AngularJS e NodeJS con l'uso delle Promise.
 
 
