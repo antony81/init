@@ -7,7 +7,7 @@ Installare [git](http://git-scm.com/) e un web browser.
 
 Installare [NodeJS](https://nodejs.org/).
 
-Installare inoltre i pacchetti express, body-parser e mysql
+Installare inoltre i pacchetti express, body-parser e mysql.
 
 ```shell
 npm install -g express
@@ -40,6 +40,8 @@ Al posto di user inserire l'username del proprio mysql. Inserire la password qua
 
 ## Avviare l'applicazione
 Posizionarsi nella sottocartella init/rubrica.
+
+Aprire con un editor il file server.js e mettere user e password del proprio DataBase dove richiesto.
 
 Avviare con NodeJS il file server.js (che funge da server per l'applicazione).
 
