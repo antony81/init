@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Archivio Film</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/insert.css">
+        <!--
+        Lo script di sotto è fondamentale per la corretta esecuzione del codice
+        perché ci consente di importare il contenuto utile per far funzionare
+        AngularJS (infatti si farà uso del file remoto 'angular.min.js'). In
+        alternativa si potrebbe usare un package manager come ad esempio 'npm'.
+        -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    </head>
+    <body>
+        <div id="master">
+            <div id="t1"><h1>INSERISCI NUOVO FILM</h1></div>
+            <hr>
+            <!--
+            Questa form richiamerà la callback presente nel file 'sever.js' che
+            fungerà da vero e proprio Server elaborando la richiesta in POST.
+            Accetterà quindi i dati dell'utente e li inserirà con una query nel
+            DataBase.
+            -->
+            <form action="/save" method="post">
+                <label>Titolo</label>
+                <input type="text" name="title" placeholder="Titolo" autofocus>
+                <br><br>
+                <label>Anno</label>
+                <input type="text" name="year" placeholder="Anno">
+                <br><br>
+                <label>Durata</label>
+                <input type="text" name="duration" placeholder="Durata">
+                <br><br>
+                <label>Colore</label>
+                <div class="radioDiv">
+                    <div class="column">
+                        <input type="radio" name="color" value="Colore" checked>
+                        <label class="cat">Colore</label>
+                    </div>
+                    <div class="column">
+                        <input type="radio" name="color" value="Bianco & Nero">
+                        <label class="cat">Bianco & Nero</label>
+                    </div>
+                </div>
+                <br><br>
+                <label>Audio</label>
+                <div class="radioDiv">
+                    <div class="column">
+                        <input type="radio" name="audio" value="Sonoro" checked>
+                        <label class="cat">Sonoro</label>
+                    </div>
+                    <div class="column">
+                        <input type="radio" name="audio" value="Muto">
+                        <label class="cat">Muto</label>
+                    </div>
+                </div>
+                <br><br>
+                <label>Genere</label>
+                <div id="catDiv">
+                    <div id="catLeft">
+                        <input type="checkbox" name="category" value="Animazione">
+                        <label class="cat">Animazione</label>
+                        <br>
+                        <input type="checkbox" name="category" value="Avventura">
+                        <label class="cat">Avventura</label>
+                        <br>
+                        <input type="checkbox" name="category" value="Biografico">
+                        <label class="cat">Biografico</label>
+                        <br>
+                        <input type="checkbox" name="category" value="Commedia">
+                        <label class="cat">Commedia</label>
+                        <br>
+                        <input type="checkbox" name="category" value="Documentario">
+                        <label class="cat">Documentario</label>
+                        <br>
+                        <input type="checkbox" name="category" value="Drammatico">
+                        <label class="cat">Drammatico</label>
+                        <br>
+                        <input type="checkbox" name="category" value="Erotico">
+                        <label class="cat">Erotico</label>
+                        <br>
+                        <input type="checkbox" name="category" value="Fantascienza">
+                        <label class="cat">Fantascienza</label>
+                        <br>
+                    </div>
+                    <div id="catCenter"></div>
+                    <div id="catRight">
+                        <input type="checkbox" name="category" value="Fantasy">
+                        <label class="cat">Fantasy</label>
+                        <br>
+                        <input type="checkbox" name="category" value="Guerra">
+                        <label class="cat">Guerra</label>
+                        <br>
+                        <input type="checkbox" name="category" value="Horror">
+                        <label class="cat">Horror</label>
+                        <br>
+                        <input type="checkbox" name="category" value="Musical">
+                        <label class="cat">Musical</label>
+                        <br>
+                        <input type="checkbox" name="category" value="Storico">
+                        <label class="cat">Storico</label>
+                        <br>
+                        <input type="checkbox" name="category" value="Thriller">
+                        <label class="cat">Thriller</label>
+                        <br>
+                        <input type="checkbox" name="category" value="Western">
+                        <label class="cat">Western</label>
+                        <br>
+                        <input type="checkbox" name="category" value="Altro">
+                        <label class="cat">Altro</label>
+                        <br>
+                    </div>
+                </div>
+                <br><br><br><br><br><br><br><br><br><br>
+                <label>Regia</label>
+                <input type="text" name="direction" placeholder="Regia">
+                <br><br>
+                <label>Attori</label>
+                <textarea name="actors" rows="4" placeholder="Attori"></textarea>
+                <br><br><br><br><br><br><br><br><br>
+                <button type="submit">Cataloga</button>
+                <button type="reset">Reset</button>
+                <br><br>
+            </form>
+            <hr>
+        </div>
+    </body>
+</html>

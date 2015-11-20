@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2015 antony
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+        <title>Archivio Film</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/display.css">
+        <!--
+        Lo script di sotto è fondamentale per la corretta esecuzione del codice
+        perché ci consente di importare il contenuto utile per far funzionare
+        AngularJS (infatti si farà uso del file remoto 'angular.min.js'). In
+        alternativa si potrebbe usare un package manager come ad esempio 'npm'.
+        -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <!--
+        Questi script importano il modulo, il servizio, e i due controller
+        -->
+        <script src="js/film.js"></script>
+        <script src="js/loadCtrl.js"></script>
+    </head>
+    <!--
+    La direttiva 'ng-app' definisce il contesto della nostra applicazione, cioè
+    indica ad AngularJS quale elemento della pagina prendere in considerazione
+    per poterlo interpretare come interfaccia grafica della nostra applicazione.
+    In questo caso la direttiva è dichiarata nel <body> per cui AngularJS si
+    concentrerà su tutta l'applicazione. Se la direttiva fosse stata dichiarata
+    nel <div> sottostante, AngularJS si sarebbe focalizzato esclusivamente in
+    tal punto.
+    -->
+    <body ng-app="film">
+        <div id="master">
+            <div id="t1"><h1>I TUOI FILM</h1></div>
+            <hr>
+            <!--
+            Il <div> di sotto può essere definito come 'View' in AngularJS ed è
+            il risultato visivo generato a partire dallo stesso <div>
+            eventualmente arricchito da direttive. La direttiva 'ng-controller'
+            in uso non fa altro che agganciare il 'Controller' definito negli
+            'script' importati nell'header.
+            Un 'Controller' va, ovviamente, scritto in JavaScript.
+            -->
+            <div id="show" ng-controller="loadCtrl">
+                <table>
+                    <tr>
+                        <th style="color: gold;">#</th>
+                        <th>Titolo</th>
+                        <th>Anno</th>
+                    </tr>
+                    <!--
+                    La direttiva 'ng-repeat' usata sotto consente di iterare la
+                    struttura dati 'FilmData' e, usando il filtro 'orderBy' su
+                    'title', la tabella mostrerà i dati in ordine alfabetico sui
+                    titoli dei film. Inoltre si è fatto uso anche del filtro
+                    '$index', il quale ritorna l'indice della tabella in modo da
+                    visualizzarlo nella prima cella di ogni riga.
+                    -->
+                    <tr ng-repeat="movie in filmData | orderBy : 'title'">
+                        <td style="color: white;">{{ $index + 1 }}</td>
+                        <td>{{ movie.title }}</td>
+                        <td>{{ movie.year }}</td>
+                    </tr>
+                </table>
+            </div>
+            <hr>
+            <br><br>
+            <a href="insert.html">
+                <img border="0" alt="Inserisci un film" src="img/insert.png" width="240" height="52">
+            </a>
+            <br><br>
+        </div>
+    </body>
+</html>
