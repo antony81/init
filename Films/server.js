@@ -60,8 +60,8 @@ exp.use(bodyParser.urlencoded({
  */
 q.configure({
     host: 'localhost',
-    user: 'root',
-    password: 'reti11'
+    user: 'user',
+    password: 'password'
 });
 
 /*
